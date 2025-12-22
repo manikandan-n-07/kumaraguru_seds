@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="icon" href="src/img/sedsb.png" type="image/png">
+    <title>Action Confirmed!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta name="author" content="Manikandan N">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kumaraguruseds.space/">
+  <meta property="og:title" content="Kumaraguru SEDS">
+  <meta property="og:description" content="Kumaraguru SEDS is a student-driven chapter dedicated to space exploration, astronomy, and aerospace innovation. We conduct hands-on workshops, stargazing sessions, and technical projects to inspire curiosity and scientific learning. Our mission is to empower young minds to explore the universe and contribute to the advancement of space science and technology.">
+  <meta property="og:image" content="https://kumaraguruseds.space/sedsb.png">
+ <link rel="icon" href="src/img/sedsb.png" type="image/png">
+<style>
+        :root{
+            --card: rgba(19, 34, 51, 0.75);
+            --sidebar-bg: #132233;
+            --accent: #4da6ff;
+            --success-color: #28a745;
+            --snooze-color: #ffc107;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: "Poppins", sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            color: #fff;
+            overflow: hidden;
+            position: relative;
+        }
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: url('src/img/background.jpg') no-repeat center center/cover fixed;
+            filter: brightness(70%);
+            z-index: -1;
+        }
+        .stars-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+        .star { position: absolute; background-color: #fff; border-radius: 50%; animation: fall linear infinite; }
+        @keyframes fall {
+            from { transform: translateY(-20px); opacity: 1; }
+            to { transform: translateY(100vh); opacity: 0; }
+        }
+        .card {
+            background: var(--card);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+            transition: border-top-color 0.5s ease;
+        }
+        .card.success { border-top: 5px solid var(--success-color); }
+        .card.snooze { border-top: 5px solid var(--snooze-color); }
+        
+        h1 {
+            font-size: 2.8em; font-weight: 700; margin-bottom: 15px;
+            transition: color 0.5s ease;
+        }
+        h1.success { color: var(--success-color); }
+        h1.snooze { color: var(--snooze-color); }
+        
+        p { font-size: 1.1em; color: #c9d1e6; line-height: 1.6; }
+        .footer-text { font-size: 0.9em; color: #aaa; margin-top: 25px; }
+    </style>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Kumaraguru SEDS",
+    "url": "https://kumaraguruseds.space/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://kumaraguruseds.space/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Kumaraguru SEDS",
+    "url": "https://kumaraguruseds.space/",
+    "logo": "https://kumaraguruseds.space/sedsb.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "seds@kct.ac.in",
+      "telephone": "+91-9344752075",
+      "contactType": "Customer Support",
+      "areaServed": "IN",
+      "availableLanguage": "English"
+    },
+    "sameAs": [
+      "https://youtube.com/@kumaraguru_seds",
+      "https://www.linkedin.com/company/seds-kct/",
+      "https://www.instagram.com/seds_kumaraguru/"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "name": [
+      "Home",
+      "Vision",
+      "Mission",
+      "Staff Coordinator",
+      "Our Teams",
+      "Contact Us",
+      "Events",
+      "Kosmorena'25",
+      "Kosmorena'24",
+      "Kosmorena'21",
+      "Events Team Members",
+      "PR Team Members",
+      "Admin Team Members",
+      "IM & PM Team Members",
+      "Media Team Members",
+      "Finance Team Members",
+      "Astronomy Team Members"
+    ],
+    "url": [
+      "https://kumaraguruseds.space/#home",
+      "https://kumaraguruseds.space/#vision",
+      "https://kumaraguruseds.space/#mission",
+      "https://kumaraguruseds.space/#staff",
+      "https://kumaraguruseds.space/#teams",
+      "https://kumaraguruseds.space/#contact",
+      "https://kumaraguruseds.space/Events.html",
+      "https://kumaraguruseds.space/Kosmorena25.html",
+      "https://kumaraguruseds.space/Kosmorena24.html",
+      "https://sedsalpha.wordpress.com/kosmorena-2021/",
+      "https://kumaraguruseds.space/team_members_event.html",
+      "https://kumaraguruseds.space/team_members_pr.html",
+      "https://kumaraguruseds.space/team_members_admin.html",
+      "https://kumaraguruseds.space/team_members_impm.html",
+      "https://kumaraguruseds.space/team_members_media.html",
+      "https://kumaraguruseds.space/team_members_finance.html",
+      "https://kumaraguruseds.space/astronomy_team_members.html"
+    ]
+  }
+  </script>
+</head>
+<body>
+    <div class="stars-container"></div>
+
+    <div class="card" id="confirmationCard">
+        <h1 id="statusTitle"></h1>
+        <p id="message">Your action has been recorded.</p>
+        <p class="footer-text">You can now close this tab.</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Falling Stars Script ---
+            const starsContainer = document.querySelector('.stars-container');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                const size = Math.random() * 3 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.animationDuration = `${Math.random() * 5 + 3}s`;
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                starsContainer.appendChild(star);
+            }
+
+            // --- Message Display Script ---
+            const params = new URLSearchParams(window.location.search);
+            const msg = params.get('msg');
+            const type = params.get('type');
+            
+            const card = document.getElementById('confirmationCard');
+            const title = document.getElementById('statusTitle');
+            const message = document.getElementById('message');
+
+            if (type === 'snooze') {
+                card.className = 'card snooze';
+                title.className = 'snooze';
+                title.textContent = '⏰ Snoozed!';
+            } else { // Default to success
+                card.className = 'card success';
+                title.className = 'success';
+                title.textContent = '✅ Success!';
+            }
+
+            if (msg) {
+                message.innerHTML = decodeURIComponent(msg);
+            }
+        });
+    </script>
+</body>
+</html>
