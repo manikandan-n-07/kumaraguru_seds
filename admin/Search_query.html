@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="icon" href="../src/img/sedsb.png" type="image/png">
+      <link rel="stylesheet" href="../src/audio/music_player.css">
+<link rel="stylesheet" href="../falling_stars/star.css">
+<link rel="stylesheet" href="contact_us/contact.css">
+    <title>Search Query Of SEDS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta name="author" content="Manikandan N">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kumaraguruseds.space/">
+  <meta property="og:title" content="Kumaraguru SEDS">
+  <meta property="og:description" content="Kumaraguru SEDS is a student-driven chapter dedicated to space exploration, astronomy, and aerospace innovation. We conduct hands-on workshops, stargazing sessions, and technical projects to inspire curiosity and scientific learning. Our mission is to empower young minds to explore the universe and contribute to the advancement of space science and technology.">
+  <meta property="og:image" content="https://kumaraguruseds.space/sedsb.png">
+ <link rel="icon" href="src/img/sedsb.png" type="image/png">
+<style>
+        :root {
+            --text: #ffffff;
+            --muted: #c9d1e6;
+            --accent: #4da6ff;
+            --card: rgba(255, 255, 255, 0.08);
+            --border-color: rgba(255, 255, 255, 0.2);
+            --placeholder-color-dark: #333333;
+            --placeholder-color-light: #cccccc;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            color: var(--text);
+            min-height: 100vh;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 0;
+            background: #0d1e3a;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('../src/img/background.jpg') no-repeat center center/cover fixed;
+            filter: brightness(65%);
+            z-index: -1;
+        }
+/* Sidebar Navigation */
+
+    .sidebar{
+      position:fixed;
+      top:0; left:-260px;
+      width:260px;
+      height:100%;
+      background:var(--sidebar-bg);
+      padding:30px 20px;
+      transition:0.3s;
+      z-index:2000;
+      overflow-y:auto;      /* ✅ make sidebar scrollable */
+      max-height:100vh;     /* ✅ keep it within viewport */
+    }
+    .sidebar.active{left:0;}
+    .sidebar a{
+      display:block;
+      padding:15px 0;
+      color:#fff;
+      font-size:20px;
+      text-decoration:none;
+      border-bottom:1px solid rgba(255,255,255,0.2);
+    }
+    .sidebar a:hover{color:var(--accent);}
+    .close-btn{
+      font-size:22px;
+      color:#fff;
+      cursor:pointer;
+      text-align:right;
+      margin-bottom:20px;
+      display:block;
+    }
+
+    .hamburger{
+      font-size:28px;
+      cursor:pointer;
+      color:white;
+    }
+
+    .main{
+      padding:20px;
+      background:rgba(0,0,0,0.45);
+    }
+
+    .section{
+      margin:40px auto;
+      padding:25px;
+      max-width:1100px;
+      background:var(--card);
+      border-radius:16px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.4);
+      opacity:0;
+      transform:translateY(40px);
+      transition:all 0.8s ease-out;
+    }
+    .section.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+    .section h1,
+    .contact h2 {
+      font-size:28px;
+      margin-bottom:14px;
+      text-align:center;
+      color:var(--section-title);
+    }
+
+    .section p,
+    .team-card p,
+    .contact p {
+      font-size:14px;
+      color:var(--muted);
+      text-align:justify;
+    }
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+            margin: auto;
+        }
+
+        .search-container {
+            background: var(--card);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+            width: 100%;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            display: flex; /* Added for alignment */
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .search-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
+        }
+
+        .search-container h2 {
+            text-align: center;
+            color: var(--accent);
+            margin-bottom: 5px;
+            font-size: 2rem;
+        }
+
+        .search-controls {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .search-input, .sheet-select {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text);
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .search-input {
+            width: 100%;
+        }
+
+        .sheet-select {
+            width: auto;
+            min-width: 150px;
+        }
+        
+        .search-input::placeholder {
+            color: var(--placeholder-color-light);
+            opacity: 1; 
+        }
+
+        .search-input:focus {
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 10px var(--accent);
+        }
+        .sheet-select {
+    transition: all 0.3s ease-in-out;
+    border-radius: 8px;
+    padding: 8px 12px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #fff; /* Text always visible */
+    border: 1px solid var(--accent);
+}
+
+/* Options dropdown */
+.sheet-select option {
+    background-color: #222; /* Solid background for readability */
+    color: #fff; /* White text */
+    padding: 6px 10px;
+}
+
+/* Focus Effect */
+.sheet-select:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 15px var(--accent), 0 0 30px var(--accent);
+    transform: scale(1.05);
+    animation: glowPulse 1.5s infinite alternate;
+}
+
+@keyframes glowPulse {
+    from {
+        box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
+    }
+    to {
+        box-shadow: 0 0 20px var(--accent), 0 0 40px var(--accent);
+    }
+}
+        .results-container {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 16px;
+            padding: 20px;
+            width: 100%;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+        }
+        
+        .table-wrapper {
+            overflow-x: auto;
+            width: 100%;
+        }
+
+        .results-table {
+            width: 100%;
+            min-width: 800px;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+        
+        .results-table th, .results-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            word-wrap: break-word;
+        }
+
+        .results-table th {
+            color: var(--accent);
+            font-weight: 600;
+            background-color: rgba(255, 255, 255, 0.05);
+            position: sticky;
+            top: 0;
+        }
+        
+        .results-table tr {
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .results-table tr:hover {
+            background-color: rgba(255, 255, 255, 0.03);
+            transform: scale(1.01);
+            cursor: pointer;
+        }
+
+        .message {
+            text-align: center;
+            color: var(--muted);
+            margin-top: 20px;
+        }
+        
+        .results-table a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s, text-decoration 0.3s;
+        }
+
+        .results-table a:hover {
+            text-decoration: underline;
+            color: #8cd2ff;
+        }
+        
+        /* New CSS for Highlighting */
+        .results-table .highlight {
+            background-color: #ffd700; /* Gold/Yellow background for visibility */
+            color: #1a1a1a; /* Dark text for contrast */
+            padding: 1px 2px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        
+        /* Stars */
+       .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none; /* Prevents interaction with stars */
+        }
+
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #fff, 0 0 20px #fff;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            from {
+                transform: translateY(-20px);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Kumaraguru SEDS",
+    "url": "https://kumaraguruseds.space/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://kumaraguruseds.space/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Kumaraguru SEDS",
+    "url": "https://kumaraguruseds.space/",
+    "logo": "https://kumaraguruseds.space/sedsb.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "seds@kct.ac.in",
+      "telephone": "+91-9344752075",
+      "contactType": "Customer Support",
+      "areaServed": "IN",
+      "availableLanguage": "English"
+    },
+    "sameAs": [
+      "https://youtube.com/@kumaraguru_seds",
+      "https://www.linkedin.com/company/seds-kct/",
+      "https://www.instagram.com/seds_kumaraguru/"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "name": [
+      "Home",
+      "Vision",
+      "Mission",
+      "Staff Coordinator",
+      "Our Teams",
+      "Contact Us",
+      "Events",
+      "Kosmorena'25",
+      "Kosmorena'24",
+      "Kosmorena'21",
+      "Events Team Members",
+      "PR Team Members",
+      "Admin Team Members",
+      "IM & PM Team Members",
+      "Media Team Members",
+      "Finance Team Members",
+      "Astronomy Team Members"
+    ],
+    "url": [
+      "https://kumaraguruseds.space/#home",
+      "https://kumaraguruseds.space/#vision",
+      "https://kumaraguruseds.space/#mission",
+      "https://kumaraguruseds.space/#staff",
+      "https://kumaraguruseds.space/#teams",
+      "https://kumaraguruseds.space/#contact",
+      "https://kumaraguruseds.space/events/",
+      "https://kumaraguruseds.space/events/kosmorena25/",
+      "https://kumaraguruseds.space/events/kosmorena25/",
+      "https://sedsalpha.wordpress.com/kosmorena-2021/",
+      "https://kumaraguruseds.space/teams/events/",
+      "https://kumaraguruseds.space/teams/pr/",
+      "https://kumaraguruseds.space/teams/admin/",
+      "https://kumaraguruseds.space/teams/impm/",
+      "https://kumaraguruseds.space/teams/media/",
+      "https://kumaraguruseds.space/teams/finance/",
+      "https://kumaraguruseds.space/teams/astronomy/"
+    ]
+  }
+  </script>
+</head>
+<body>
+    <div class="stars-container"></div>
+        <div class="sidebar" id="sidebar">
+    <span class="close-btn" onclick="toggleSidebar()">Menu ×</span>
+      <a href="../birthday/current_birthday.html">Current Birthday</a>
+      <a href="../birthday/alumni_birthday.html">Alumni Birthday</a>
+      <a href="../birthday/birthday_form.html">Birthday Form</a>
+      <a href="../birthday/feedback.html">Feedback Form</a>
+      <a href="../birthday/kosmorena25_registration_links.html">Kosmorena'25 Event Registrations Links</a>
+      <a href="../birthday/shorturl.html">Links</a>
+    </div>
+
+<div class="main-container">
+    <div class="search-container">
+        <h2>Professional Search</h2>
+        <div class="search-controls">
+            <input type="text" id="searchInput" class="search-input" placeholder="Start typing to search...">
+            <select id="sheetSelect" class="sheet-select">
+                <option value="19l1_-w4iXU-rr78q0pATYDYyJWXMJ-lO4ZVKEmJ8fx0">Ideathon Registrations</option>
+                <option value="12PiNuD_wu4QYBtdMAoE6KknqdPxELAYLV13YzvXvCj8">Contact Us</option>
+                <option value="1DYImHzQRQI25Z0Ck5xumIkRH56_Z3O9O63iSkVWU65s">Birthday</option>
+                <option value="1bFh-nuy_swNJUX7bFO_KuXh3ZU5DiXvxEuzSxcYanoQ">Feedback</option>
+                <option value="1jJZV0QC_B3Sn40bWApnpEStPv_x6R-pHEOqoEnRzYMY">Remainder</option>
+                <option value="1666kdh2J5Ep3R7J3GAWCWzSTDpOi6i1R6yj_wdN1EpI">Shorten Links</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="results-container">
+        <p class="message" id="statusMessage">Enter your search query.</p>
+        <div class="table-wrapper">
+            <table class="results-table" id="resultsTable"></table>
+        </div>
+    </div>
+</div>
+
+<!-- 🎵 DRAGGABLE / MINIMIZABLE MUSIC PLAYER -->
+<div class="music-wrapper" id="musicWrapper">
+
+  <div class="music-mini" id="musicMini">
+    🎵
+  </div>
+
+  <div class="music-card" id="musicCard">
+
+    <div class="drag-handle" id="dragHandle">
+      Minimize & Drag Bar
+      <button class="min-btn" id="minBtn">—</button>
+    </div>
+
+    <div class="music-top">
+      <canvas id="waveform"></canvas>
+    </div>
+
+    <div class="music-info">
+     <img src="../src/img/musicalbum.jpg" class="album-art" id="albumArt">
+      <div>
+        <h4>Kosmic Beats</h4>
+        <p>Kumaraguru SEDS</p>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="progress-wrap">
+        <svg class="progress-ring" width="80" height="80">
+          <circle class="bg" cx="40" cy="40" r="34" />
+          <circle class="progress" cx="40" cy="40" r="34" />
+        </svg>
+        <button id="playBtn" class="play-btn">
+          <svg id="playIcon" viewBox="0 0 100 100">
+            <polygon points="35,25 75,50 35,75"/>
+          </svg>
+          <svg id="pauseIcon" viewBox="0 0 100 100">
+            <rect x="35" y="25" width="10" height="50"/>
+            <rect x="55" y="25" width="10" height="50"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="volume">
+        <svg viewBox="0 0 24 24">
+          <path d="M3 9v6h4l5 4V5L7 9H3z"/>
+        </svg>
+        <input type="range" id="volume" min="0" max="1" step="0.01">
+      </div>
+    </div>
+
+    <audio id="audio" src="../src/audio/space.mp3"></audio>
+  </div>
+</div>
+  <script src="../src/audio/load_player.js"></script>
+  <script src="../falling_stars/star.js"></script>
+    
+<script>
+    const searchInput = document.getElementById('searchInput');
+    const sheetSelect = document.getElementById('sheetSelect');
+    const resultsTable = document.getElementById('resultsTable');
+    const statusMessage = document.getElementById('statusMessage');
+
+    const scriptURL = "https://script.google.com/macros/s/AKfycbxaKVmr0cjVGszuZj4VweGiwspcY0SsJvDQ7ixhPTK-z3b5ZAM8unZkjHywJp4y3GkGhw/exec";
+    
+    let allData = [];
+    let debounceTimer;
+    const urlPattern = /^(https?:\/\/[^\s$.?#].[^\s]*)$/i;
+
+    let currentSearchQuery = ''; 
+
+    function highlightText(text, query) {
+        const lowerCaseText = String(text);
+        const shouldHighlight = query.length > 0;
+        if (!shouldHighlight || typeof lowerCaseText !== 'string') return text;
+
+        // Escape special characters in the query for regex
+        const escapedQuery = query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+        // Create a global, case-insensitive regular expression
+        const regex = new RegExp(`(${escapedQuery})`, 'gi');
+        
+        // Replace the matched text with a span for highlighting
+        return lowerCaseText.replace(regex, '<span class="highlight">\$1</span>');
+    }
+
+    function renderTable(data) {
+        if (data.length === 0) {
+            resultsTable.innerHTML = '';
+            statusMessage.textContent = 'No entries found.';
+            return;
+        }
+
+        statusMessage.textContent = '';
+        const headers = Object.keys(data[0]);
+        let tableHTML = '<thead><tr>';
+        
+        // Add the S.No. header
+        tableHTML += `<th>S.No.</th>`;
+        
+        headers.forEach(header => {
+            tableHTML += `<th>${header}</th>`;
+        });
+        tableHTML += '</tr></thead><tbody>';
+
+        const query = currentSearchQuery.toLowerCase().trim();
+
+        data.forEach((row, index) => {
+            tableHTML += '<tr>';
+            
+            // Add the serial number cell
+            tableHTML += `<td>${index + 1}</td>`;
+            
+            headers.forEach(header => {
+                const cellValue = row[header];
+                let cellContent = String(cellValue); 
+                
+                if (urlPattern.test(cellValue)) {
+                    // For URLs, don't highlight the link text, just display it as a link
+                    cellContent = `<a href="${cellValue}" target="_blank">${cellValue}</a>`;
+                } else {
+                    // Highlight non-URL content
+                    cellContent = highlightText(cellContent, query);
+                }
+
+                tableHTML += `<td>${cellContent}</td>`;
+            });
+            tableHTML += '</tr>';
+        });
+
+        tableHTML += '</tbody>';
+        resultsTable.innerHTML = tableHTML;
+    }
+    
+    function filterData(query) {
+        currentSearchQuery = query.trim();
+
+        if (currentSearchQuery.length === 0) {
+            renderTable(allData);
+            return;
+        }
+        
+        const lowerCaseQuery = currentSearchQuery.toLowerCase();
+        const filteredData = allData.filter(row => {
+            for (const key in row) {
+                if (String(row[key]).toLowerCase().includes(lowerCaseQuery)) {
+                    return true;
+                }
+            }
+            return false;
+        });
+        renderTable(filteredData);
+    }
+
+    function fetchData() {
+        const selectedSheetId = sheetSelect.value;
+        statusMessage.textContent = 'Loading all data from the sheet... Please wait.';
+        // Clear search and table when fetching new data
+        searchInput.value = '';
+        currentSearchQuery = ''; 
+        resultsTable.innerHTML = '';
+
+        fetch(`${scriptURL}?sheetId=${encodeURIComponent(selectedSheetId)}`)
+            .then(response => response.json())
+            .then(result => {
+                if (result.status === 'SUCCESS' && result.data) {
+                    allData = result.data;
+                    renderTable(allData);
+                    statusMessage.textContent = 'Data loaded successfully. Start typing to filter.';
+                } else {
+                    resultsTable.innerHTML = '';
+                    statusMessage.textContent = result.message || 'An error occurred while fetching data.';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                resultsTable.innerHTML = '';
+                statusMessage.textContent = 'An error occurred. Please try again.';
+            });
+    }
+
+    searchInput.addEventListener('input', () => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+            filterData(searchInput.value.trim());
+        }, 300);
+    });
+
+    sheetSelect.addEventListener('change', () => {
+        fetchData();
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchData();
+    });
+
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'C' || e.key === 'c' || e.key === 'J' || e.key === 'j')) || (e.ctrlKey && (e.key === 'U' || e.key === 'u'))) {
+            e.preventDefault();
+        }
+    });
+
+    document.addEventListener('dragstart', function(e) {
+        e.preventDefault();
+    });
+     function toggleSidebar(){  
+      document.getElementById("sidebar").classList.toggle("active");  
+    }
+    document.addEventListener("click", function(e){  
+      const sidebar = document.getElementById("sidebar");  
+      const hamburger = document.querySelector(".hamburger");  
+      if(sidebar.classList.contains("active") && !sidebar.contains(e.target) && !hamburger.contains(e.target)){  
+        sidebar.classList.remove("active");  
+      }  
+    });  
+
+   const sections = document.querySelectorAll(".section, .event-gallery"); 
+    const observer = new IntersectionObserver(entries=>{  
+      entries.forEach(entry=>{  
+        if(entry.isIntersecting){  
+          entry.target.classList.add("show");  
+        }  
+      });  
+    },{threshold:0.05});  
+    sections.forEach(sec=>observer.observe(sec)); 
+
+       // --- Falling Stars Script ---
+</script>
+</body>
+</html>
+
