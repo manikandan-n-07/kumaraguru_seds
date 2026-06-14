@@ -101,21 +101,6 @@ Several forms on this webpage rely on Google Apps Script for handling data submi
 
 **Important:** These URLs are specific to the original developer's Google Apps Script deployment.  If you intend to use these functionalities, you **must** create your own Google Apps Script projects, deploy them as web apps, and update these URLs in the HTML files accordingly.  Ensure your script has the necessary permissions to access Google Sheets and Google Drive.
 
-## Contributing Guidelines
-
-Contributions to this project are welcome! To contribute:
-
-1.  Fork the repository.
-2.  Create a new branch for your feature or bug fix.
-3.  Make your changes and commit them with descriptive commit messages.
-4.  Submit a pull request to the `main` branch.
-
-Please ensure that your code follows the existing style and conventions, and that you include appropriate documentation.
-
-## License Information
-
-This project has no specified license. All rights are reserved.
-
 ## Contact/Support Information
 
 For questions or support, please contact:
