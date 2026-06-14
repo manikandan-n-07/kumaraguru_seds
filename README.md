@@ -59,13 +59,6 @@ To run or modify this webpage, you will need:
 *   A Google account (if you plan to use or modify the Google Apps Script functionality).
 *   Basic understanding of HTML, CSS, and JavaScript.
 
-## Installation Instructions
-
-Since this is a static webpage, no installation is required. Simply clone or download the repository files to your local machine.
-
-```bash
-git clone https://github.com/kumaraguru-seds/Kumaraguru_SEDS.git
-```
 
 ## Usage Guide
 
